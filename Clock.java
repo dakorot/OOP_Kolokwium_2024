@@ -2,7 +2,17 @@ import java.time.LocalTime;
 
 public abstract class Clock {
     int hour, minute, second;
+    private City city;
 
+    public Clock(City city) {
+        this.city = city;
+    }
+
+    public void setCity(City city) {
+            int timeDifference = Integer.parseInt(city.timezone) - Integer.parseInt(this.city.timezone);
+            this.city = city;
+            this.hour += timeDifference;
+    }
     public void setCurrentTime() {
         LocalTime currentTime = LocalTime.now();
         this.hour = currentTime.getHour();

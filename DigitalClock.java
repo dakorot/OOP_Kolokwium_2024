@@ -1,7 +1,8 @@
 public class DigitalClock extends Clock {
     int format;
 
-    public DigitalClock(int hour, int minute, int second, int format) {
+    public DigitalClock(int hour, int minute, int second, int format, City city) {
+        super(city);
         setTime(hour, minute, second);
         if(format == 12 || format == 24)
             this.format = format;
