@@ -1,5 +1,8 @@
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         City testCity = new City();
@@ -13,7 +16,6 @@ public class Main {
 
         String filePath = "./strefy.csv";
         HashMap<String, City> parsedCities = City.parseFile(filePath);
-
 
         City testCity2 = new City();
         testCity2.name = "Kijów";
@@ -31,5 +33,11 @@ public class Main {
 
         String lublinTime = testCity3.localMeanTime(12, 0, 0);
         System.out.println(lublinTime);
+
+        List<City> sortedCities = new ArrayList<>(parsedCities.values());
+        sortedCities.sort(City::worstTimezoneFit);
+        for(City city : sortedCities) {
+            System.out.println(city.name);
+        }
     }
 }
