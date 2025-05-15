@@ -1,10 +1,11 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         City testCity = new City();
         testCity.name = "Warszawa";
         testCity.timezone = "2";
@@ -39,5 +40,7 @@ public class Main {
         for(City city : sortedCities) {
             System.out.println(city.name);
         }
+
+        AnalogClock.toSvg("C:\\Users\\dorat\\Documents\\OOP_Kolokwium_2024\\clock.svg");
     }
 }
