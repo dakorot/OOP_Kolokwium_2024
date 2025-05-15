@@ -34,4 +34,26 @@ public class City {
             throw new FileNotFoundException(exception.getMessage());
         }
     }
+
+    public static double parseLongitude(String longitude) {
+        String[] parts = longitude.split(" ");
+        double degrees = Double.parseDouble(parts[0]);
+        String direction = parts[1];
+
+        return direction.equalsIgnoreCase("W") ? -degrees : degrees;
+    }
+    public String localMeanTime(int hour, int min, int sec) {
+        double longitude = parseLongitude(this.longitude);
+        double timezoneDifference = longitude - Double.parseDouble(this.timezone)*15.0;
+        int localTimeShiftInSeconds = (int)Math.round(timezoneDifference*240);
+        int totalSeconds = hour*3600 + min*60 + sec;
+        totalSeconds += localTimeShiftInSeconds;
+        totalSeconds = ((totalSeconds % 86400) + 86400) % 86400;
+
+        int newHour = totalSeconds / 3600;
+        int newMin = (totalSeconds % 3600) / 60;
+        int newSec  = totalSeconds % 60;
+
+        return String.format("%02d:%02d:%02d", newHour, newMin, newSec);
+    }
 }

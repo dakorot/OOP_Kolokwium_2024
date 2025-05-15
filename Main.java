@@ -8,7 +8,7 @@ public class Main {
         testCity.latitude = "52.2297 N";
         testCity.longitude = "21.0122 E";
 
-        DigitalClock testDigitalClock = new DigitalClock(11, 32, 1, 24, testCity);
+        DigitalClock testDigitalClock = new DigitalClock(9, 32, 1, 24, testCity);
         System.out.println(testDigitalClock.toString());
 
         String filePath = "./strefy.csv";
@@ -23,5 +23,13 @@ public class Main {
 
         testDigitalClock.setCity(testCity2);
 
+        City testCity3 = new City();
+        testCity3.name = "Lublin";
+        testCity3.timezone = "2";
+        testCity3.latitude = "51.2465 N";
+        testCity3.longitude = "22.5684 E";
+
+        String lublinTime = testCity3.localMeanTime(12, 0, 0);
+        System.out.println(lublinTime);
     }
 }
