@@ -42,5 +42,19 @@ public class Main {
         }
 
         AnalogClock.toSvg("C:\\Users\\dorat\\Documents\\OOP_Kolokwium_2024\\clock.svg");
+        int currentTimeInSeconds = 3*3600 + 15*60 + 30;
+
+        HourHand hourHand = new HourHand();
+        hourHand.setTime(currentTimeInSeconds);
+        System.out.println(hourHand.toSvg());
+
+        MinuteHand minuteHand = new MinuteHand();
+        minuteHand.setTime(currentTimeInSeconds);
+        System.out.println(minuteHand.toSvg());
+
+        SecondHand secondHand = new SecondHand();
+        secondHand.setTime(currentTimeInSeconds);
+        System.out.println(secondHand.toSvg());
+
     }
 }
